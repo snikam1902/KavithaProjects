@@ -5,6 +5,7 @@ Feature: login page
   I want to see the login page as expected
   So that I can login into my account
 
+  @login
   Scenario Outline: Admin logging with blank details
     Given I am on the login page
     When I enter userName as "<userName>", password as "<passWord>"
@@ -15,6 +16,7 @@ Feature: login page
       |          | somepwd  | Username cannot be empty |
       | someuser |          | Password cannot be empty |
 
+  @login
   Scenario Outline: Admin logging with invalid credentials
     Given I am on the login page
     When I enter userName as "<userName>", password as "<passWord>"
@@ -26,6 +28,7 @@ Feature: login page
       | invalid  | admin    | Invalid Credentials |
       | admin    | invalid  | Invalid Credentials |
 
+  @login
   Scenario: Admin logging with valid credentials
     Given I am on the login page
     When I login with below credentials
