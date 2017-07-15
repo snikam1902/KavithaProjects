@@ -1,7 +1,10 @@
 package ohrm.com;
 
-/**
- * Created by Vinod on 15/07/2017.
- */
+
 public class Util {
+    public static  String login_URL ="http://vashint.trials621.orangehrmlive.com/auth/login";
+    public  static String adminUid="admin";
+    public static String adminPwd="ppFEVHJP";
+
+    public String dashBoard_URL="dashboardurl";
 }
