@@ -46,7 +46,7 @@ public class NewEmployeeStep {
         //wait till the page is loaded?
     }
     @And("^I expand the PIM module on the left hand side panel$")
-    public void expandPIMMendu()  {
+    public void expandPIMMenu()  {
         dashBoardPage.expandPIMMenu();
     }
 
@@ -58,7 +58,7 @@ public class NewEmployeeStep {
     }
 
 
-    @When("^I click on Employee List link$")
+    @When("^I select Employee List link$")
     public void clickOnEmployeeLink()  {
         dashBoardPage.selectEmployeeListPage();
         empListPage = new EmployeeListPage(baseStep.getDriver());
@@ -67,37 +67,37 @@ public class NewEmployeeStep {
 
     @Then("^I should be on the employee list page$")
     public void verifyEmpListPageOpened()  {
-        assertEquals(empListPage.URL, baseStep.getDriver().getCurrentUrl() );
+        assertEquals(Util.employeeList_URL, baseStep.getDriver().getCurrentUrl() );
     }
 
     @And("^I should see plus button on top right corner of the page$")
     public void verifyPlusButtonDisplayed()  {
-
+        assertTrue(empListPage.plusButton.isDisplayed());
     }
 
-    @When("^I click 'Add Employee' link under the PIM menu$")
-    public void clickOnAddEmployeeLink()  {
-        dashBoardPage.selectAddEmployee();
-        addEmployeePage = new AddEmployeePage(baseStep.getDriver());
-    }
-
-
-    @When("^I click top right corner plus button on the Employee List page$")
+    @When("^I select plus button$")
     public void clickPlusButton()  {
-        empListPage.AddEmployee();
+        empListPage.clickPlusBtn();
+    }
+
+    @When("^I click Add Employee link under the PIM menu$")
+    public void clickAddEmployeeLink()  {
+        dashBoardPage.selectAddEmployeeLink();
+        addEmployeePage = new AddEmployeePage(baseStep.getDriver());
     }
 
     @Then("^I should see Add Employee overlay$")
     public void verifyAddEmpOverlay()  {
         // verify that Add Emp is open
+        assertTrue(dashBoardPage.addEmployeeOverlay.isDisplayed());
     }
 
     @And("^default employee id should be displayed$")
     public void verifyDefaultEmpIdDisplayed()  {
-
+        assertTrue(addEmployeePage.getEmpId()!= null);
     }
 
-    @When("^I fill the form$")
+    @When("^I fill the form with following details$")
     public void fillTheFom(Map<String, String> table)   {
         // get the data and fill the form
     }
@@ -130,7 +130,7 @@ public class NewEmployeeStep {
         loginPage.Login("admin", "admin");
         dashBoardPage = new DashBoardPage(baseStep.getDriver());
         dashBoardPage.expandPIMMenu();
-        dashBoardPage.selectAddEmployee();
+        dashBoardPage.selectAddEmployeeLink();
         addEmployeePage = new AddEmployeePage(baseStep.getDriver());
     }
 

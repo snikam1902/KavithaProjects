@@ -13,7 +13,7 @@ Feature: creating an Employee by Admin
     Then I should see Configuration, Employee List, Add Employee, Bulk Update and Reports links
 
   Scenario: Employee List page
-    When I click on Employee List link
+    When I select Employee List link
     Then I should be on the employee list page
     And I should see the employee list
     And I should see plus button on top right corner of the page
@@ -25,13 +25,13 @@ Feature: creating an Employee by Admin
 
 
   Scenario: showing Add Employee overlaying using plus button
-    And I click on Employee List link
-    When I click top right corner plus button on the Employee List page
+    When I select Employee List link
+    And I select plus button
     Then I should see Add Employee overlay
 
   Scenario Outline: Creating an employee with valid data
     When I click Add Employee link under the PIM menu
-    When I fill the form
+    When I fill the form with following details
       | firstName       | <firstName>  |
       | middleName      | <middleName> |
       | lastName        | <lastName>   |
@@ -48,17 +48,19 @@ Feature: creating an Employee by Admin
     # assuming that 1000 doesnt exists
   Scenario: editing the default employee id to valid value
     Given I am on the Add Employee overlay
-    And I fill the form with following details
-    | firstName   | middleName  | lastName  | location  |
-    | emp1        | emp_middle  | emp_last  | America   |
-    And I edit the detault employee id as "1000"
+    When I fill the form with following details
+      | firstName       | first      |
+      | middleName      | middle     |
+      | lastName        | last       |
+      | location        | location   |
+    And I edit the default employee id as "1000"
     And I click save button
     Then new employee should be saved
     And "1000" employee id should be displayed in the employee list page
 
   Scenario: editing the default employee id to an existing value
     Given I am on the Add Employee overlay
-    When I fill the form
+    When I fill the form with following details
       | firstName       | first      |
       | middleName      | middle     |
       | lastName        | last       |
@@ -70,7 +72,7 @@ Feature: creating an Employee by Admin
     # I need to know the open file window options
   Scenario: adding photograph within the accepted limit
     Given I am on the Add Employee overlay
-    When I fill the form
+    When I fill the form with following details
       | firstName       | first      |
       | middleName      | middle     |
       | lastName        | last       |
@@ -81,7 +83,7 @@ Feature: creating an Employee by Admin
 
   Scenario: adding photograph over the accepted size limit
     Given I am on the Add Employee overlay
-    When I fill the form
+    When I fill the form with following details
       | firstName       | first      |
       | middleName      | middle     |
       | lastName        | last       |
@@ -92,7 +94,7 @@ Feature: creating an Employee by Admin
 
   Scenario: adding photograph over the accepted size limit
     Given I am on the Add Employee overlay
-    When I fill the form
+    When I fill the form with following details
       | firstName       | first      |
       | middleName      | middle     |
       | lastName        | last       |

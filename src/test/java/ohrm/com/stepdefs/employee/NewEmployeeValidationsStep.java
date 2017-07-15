@@ -49,7 +49,7 @@ public class NewEmployeeValidationsStep {
 
     @And("^I click on Add Employee link under the PIM menu$")
     public void clickAddEmpLink()  {
-        dashBoardPage.selectAddEmployee();
+        dashBoardPage.selectAddEmployeeLink();
     }
 
     @When("^I enter the following details$")

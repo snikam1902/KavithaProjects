@@ -19,6 +19,9 @@ public class AddEmployeePage extends BasePage{
     @FindBy(how= How.ID, using="lastName")
     private WebElement lastName;
 
+    @FindBy(how= How.ID, using="employeeId")
+    private WebElement empID;
+
     @FindBy(how= How.XPATH, using="//*[@id='location_inputfileddiv']/div/input")
     private WebElement location;
 
@@ -39,6 +42,9 @@ public class AddEmployeePage extends BasePage{
         super(driver);
     }
 
+    public String getEmpId(){
+        return empID.getText();
+    }
     public void createEmployee(String firstName, String middleName, String lastName, String location){
         this.firstName.sendKeys(firstName);
         this.middleName.sendKeys(middleName);

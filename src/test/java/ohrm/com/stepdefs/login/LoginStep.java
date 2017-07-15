@@ -5,6 +5,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import ohrm.com.Util;
 import ohrm.com.pages.LoginPage;
 import ohrm.com.stepdefs.BaseStep;
 import org.openqa.selenium.By;
@@ -33,7 +34,7 @@ public class LoginStep {
     @Given("^I am on the login page$")
     public void openLoginPage()  {
         loginPage.open();
-        assertEquals(loginPage.URL, baseStep.getDriver().getCurrentUrl());
+        assertEquals(Util.login_URL, baseStep.getDriver().getCurrentUrl());
     }
 
     @When("^I enter userName as \"([^\"]*)\", password as \"([^\"]*)\"$")

@@ -9,7 +9,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends BasePage {
 
-
     @FindBy(how = How.NAME, using="txtUsername")
     public WebElement userName;
 

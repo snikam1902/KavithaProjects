@@ -19,13 +19,14 @@ public class BaseStep {
             System.setProperty("webdriver.chrome.driver", path + "\\src\\test\\resources\\chromedriver.exe");
             driver = new ChromeDriver();
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+            //maximise the window but check the type of the browser.
         }
     }
 
     @After
     public void cleanUp(){
-        driver.close();
-        driver.quit();
+        //driver.close();
+        //driver.quit();
         driver = null;
     }
 

@@ -29,11 +29,15 @@ public class DashBoardPage  extends  BasePage{
     @FindBy(how=How.LINK_TEXT, using="")
     private WebElement logOut;
 
+    @FindBy(how = How.ID, using="pimAddEmployeeForm")  //find the plus button id or
+    public WebElement addEmployeeOverlay;
+
     public DashBoardPage(WebDriver driver){
        super(driver);
     }
 
     public void expandPIMMenu(){
+       driver.switchTo().frame("noncoreIframe");
         if (!pimMenu.isDisplayed()){
             //WebDriverWait wait = new WebDriverWait(driver, 20);
             //WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("menu_pim_viewPimModule")));
@@ -41,7 +45,7 @@ public class DashBoardPage  extends  BasePage{
         pimMenu.click();
     }
 
-    public  void selectAddEmployee(){
+    public  void selectAddEmployeeLink(){
         addEmpLink.click();
     }
 

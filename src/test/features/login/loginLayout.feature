@@ -16,7 +16,7 @@ Feature: Login UI Layout
     Then "<page>" should be open
     Examples:
       | image-links | page     |
-      | linkedin    | linkedin |
-      | facebook    | facebook |
-      | twitter     | twitter  |
-      | youtube     | youtue   |
+      | linkedin    | www.linkedin.com |
+      | facebook    | www.facebook.com |
+      | twitter     | twitter.com  |
+      | youtube     | www.youtube.com   |

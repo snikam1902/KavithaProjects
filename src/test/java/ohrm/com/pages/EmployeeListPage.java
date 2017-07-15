@@ -8,14 +8,15 @@ import org.openqa.selenium.support.PageFactory;
 
 public class EmployeeListPage extends  BasePage{
 
-    @FindBy(how = How.ID, using="plusButtonID")  //find the plus button id or
-    private WebElement plusButton;
+    @FindBy(how = How.XPATH, using="//div[@class='fixed-action-btn floating-add-btn tooltipped']/a")  //find the plus button id or
+    public WebElement plusButton;
+
 
     public EmployeeListPage(WebDriver driver){
        super(driver);
     }
 
-    public void AddEmployee(){
+    public void clickPlusBtn(){
         plusButton.click();
     }
 }

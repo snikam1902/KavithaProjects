@@ -4,6 +4,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import ohrm.com.Util;
 import ohrm.com.pages.LoginPage;
 import ohrm.com.stepdefs.BaseStep;
 import org.openqa.selenium.WebDriver;
@@ -29,7 +30,7 @@ public class LoginLayoutStep {
     @Given("^I am on the Login page$")
     public void openLoginPage()  {
         loginPage.open();
-        assertEquals(loginPage.URL, baseStep.getDriver().getCurrentUrl());
+        assertEquals(Util.login_URL, baseStep.getDriver().getCurrentUrl());
     }
 
     @Then("^I should see the page as per the design$")
@@ -74,28 +75,19 @@ public class LoginLayoutStep {
        //assert that sites open
         List<String> browserTabs = new ArrayList<String>(driver.getWindowHandles());
         if (page.contains("linkedin")){
-            System.out.println("clicking linkedin");
             loginPage.linkedInLnk.click();
-            browserTabs = new ArrayList<String>(driver.getWindowHandles());
-            driver.switchTo().window(browserTabs .get(1));
-            assertTrue(baseStep.getDriver().getCurrentUrl().contains("www.linkedin.com"));
         }else if (page.contains("facebook")){
             loginPage.faceBookLnk.click();
-            browserTabs = new ArrayList<String>(driver.getWindowHandles());
-            driver.switchTo().window(browserTabs .get(1));
-            System.out.println(baseStep.getDriver().getCurrentUrl().contains("www.facebook.com"));
         }else if (page.contains("twitter")){
             loginPage.twitterLnk.click();
-            browserTabs = new ArrayList<String>(driver.getWindowHandles());
-            driver.switchTo().window(browserTabs .get(1));
-            System.out.println(baseStep.getDriver().getCurrentUrl().contains("www.twitter.com"));
         }else if (page.contains("youtube")){
             loginPage.youTubeLnk.click();
-            browserTabs = new ArrayList<String>(driver.getWindowHandles());
-            driver.switchTo().window(browserTabs .get(1));
-            System.out.println(baseStep.getDriver().getCurrentUrl().contains("www.youtube.com"));
         }
+
         //switch to new tab
+        browserTabs = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(browserTabs .get(1));
+        assertTrue(baseStep.getDriver().getCurrentUrl().contains(page));
         driver.switchTo().window(browserTabs.get(0));
     }
 
