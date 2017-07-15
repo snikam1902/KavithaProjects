@@ -8,9 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class AddEmployeePage {
-
-    private WebDriver driver;
+public class AddEmployeePage extends BasePage{
 
     @FindBy(how= How.ID, using="firstName")
     private WebElement firstName;
@@ -33,11 +31,12 @@ public class AddEmployeePage {
     @FindBy(how= How.ID, using="systemUserSaveBtn")
     private WebElement saveButton;
 
+
     @FindBy(how= How.ID, using="systemUserCacelBtn")
     public WebElement cancelButton;
 
     public AddEmployeePage(WebDriver driver){
-        PageFactory.initElements(driver, this);
+        super(driver);
     }
 
     public void createEmployee(String firstName, String middleName, String lastName, String location){

@@ -7,4 +7,6 @@ public class Util {
     public static String adminPwd="ppFEVHJP";
 
     public String dashBoard_URL="dashboardurl";
+
+    public String employeeList_URL="URL";
 }

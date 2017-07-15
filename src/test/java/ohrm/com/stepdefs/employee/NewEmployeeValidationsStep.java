@@ -25,6 +25,8 @@ public class NewEmployeeValidationsStep {
     public NewEmployeeValidationsStep(BaseStep bStep){
         this.baseStep = bStep;
     }
+
+
     /*  This method exists in the NewEmployeeStep
     @Given("^I logged in$")
     public void logInAsAdmin()  {
@@ -55,12 +57,6 @@ public class NewEmployeeValidationsStep {
 
     }
 
-    /* duplicates
-    @When("^I click Save button$")
-    public void clickSaveBtn()  {
-        
-    }
-*/
     @Then("^I should get validation message as \"([^\"]*)\"$")
     public void verifyValidations(String message, String strArg1)  {
         

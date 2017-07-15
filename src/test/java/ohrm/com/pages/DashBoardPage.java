@@ -12,9 +12,7 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-public class DashBoardPage {
-
-    private WebDriver driver;
+public class DashBoardPage  extends  BasePage{
 
     @FindBy(how= How.XPATH, using="//div[@id='menu-content']/ul/li[2]")
     private WebElement pimMenu;
@@ -32,8 +30,7 @@ public class DashBoardPage {
     private WebElement logOut;
 
     public DashBoardPage(WebDriver driver){
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+       super(driver);
     }
 
     public void expandPIMMenu(){
