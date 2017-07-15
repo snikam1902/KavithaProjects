@@ -1,5 +1,6 @@
 package ohrm.com.pages;
 
+import ohrm.com.Util;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,8 +10,6 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginPage {
 
     private WebDriver driver;
-
-    public String URL ="http://vashint.trials621.orangehrmlive.com/auth/login";
 
     @FindBy(how = How.NAME, using="txtUsername")
     public WebElement userName;
@@ -56,7 +55,7 @@ public class LoginPage {
     }
 
     public  void open(){
-        driver.get(URL);
+        driver.get(Util.login_URL);
     }
 
     public void Login(String userName, String password){

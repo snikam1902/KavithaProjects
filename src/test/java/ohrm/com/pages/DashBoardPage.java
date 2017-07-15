@@ -15,7 +15,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class DashBoardPage {
 
     private WebDriver driver;
-    public String URL="dashboardurl";
 
     @FindBy(how= How.XPATH, using="//div[@id='menu-content']/ul/li[2]")
     private WebElement pimMenu;
