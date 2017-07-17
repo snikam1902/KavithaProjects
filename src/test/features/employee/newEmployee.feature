@@ -43,7 +43,7 @@ Feature: creating an Employee by Admin
     Examples:
       |firstName	|middleName   |lastName 	|location|
       |emp1 		|emp1 middle  |emp1 last    |location|
-      |emp2         |             |emp2 last    |location|
+     # |emp2         |             |emp2 last    |location|
 
     # assuming that 1000 doesnt exists
   Scenario: editing the default employee id to valid value

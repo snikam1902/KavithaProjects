@@ -5,10 +5,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import ohrm.com.Util;
-import ohrm.com.pages.AddEmployeePage;
-import ohrm.com.pages.DashBoardPage;
-import ohrm.com.pages.EmployeeListPage;
-import ohrm.com.pages.LoginPage;
+import ohrm.com.pages.*;
 import ohrm.com.stepdefs.BaseStep;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -62,6 +59,7 @@ public class NewEmployeeStep {
     public void clickOnEmployeeLink()  {
         dashBoardPage.selectEmployeeListPage();
         empListPage = new EmployeeListPage(baseStep.getDriver());
+        assertEquals(Util.employeeList_URL, baseStep.getDriver().getCurrentUrl() );
         //assert page url
     }
 
@@ -75,7 +73,7 @@ public class NewEmployeeStep {
         assertTrue(empListPage.plusButton.isDisplayed());
     }
 
-    @When("^I select plus button$")
+    @And("^I select plus button$")
     public void clickPlusButton()  {
         empListPage.clickPlusBtn();
     }
@@ -95,16 +93,19 @@ public class NewEmployeeStep {
     @And("^default employee id should be displayed$")
     public void verifyDefaultEmpIdDisplayed()  {
         assertTrue(addEmployeePage.getEmpId()!= null);
+
     }
 
     @When("^I fill the form with following details$")
     public void fillTheFom(Map<String, String> table)   {
         // get the data and fill the form
+        System.out.println(table.get("firstName"));
+        addEmployeePage.fillEmployeeDetails(table.get("firstName"),table.get("middleName"), table.get("lastName"),table.get("location"));
     }
 
     @And("^I click save button$")
     public void clickSaveBtn()  {
-        //addEmployeePage.createEmployee();
+        addEmployeePage.save();
     }
 
     @Then("^new employee should be saved$")
@@ -120,7 +121,8 @@ public class NewEmployeeStep {
 
     @And("^\"([^\"]*)\" and \"([^\"]*)\" should be displayed in the employee list page as links.$")
     public void verifyEmpListedInEmpListPage(String firstname, String lastname)  {
-        
+        EmployeeDetailsPage detailsPage = new EmployeeDetailsPage((baseStep.getDriver()));
+        assertEquals(firstname + " " + lastname, detailsPage.getTitile());
     }
 
     // write more scenarios

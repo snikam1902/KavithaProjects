@@ -25,8 +25,8 @@ public class BaseStep {
 
     @After
     public void cleanUp(){
-        //driver.close();
-        //driver.quit();
+        driver.close();
+        driver.quit();
         driver = null;
     }
 

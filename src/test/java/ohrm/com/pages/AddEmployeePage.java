@@ -25,6 +25,7 @@ public class AddEmployeePage extends BasePage{
     @FindBy(how= How.XPATH, using="//*[@id='location_inputfileddiv']/div/input")
     private WebElement location;
 
+
     @FindBy(how= How.XPATH, using="//*[@id='location_inputfileddiv']/div/ul/li/span")
     private List<WebElement> locations;
 
@@ -45,14 +46,18 @@ public class AddEmployeePage extends BasePage{
     public String getEmpId(){
         return empID.getText();
     }
-    public void createEmployee(String firstName, String middleName, String lastName, String location){
+
+    public void fillEmployeeDetails(String firstName, String middleName, String lastName, String location){
         this.firstName.sendKeys(firstName);
         this.middleName.sendKeys(middleName);
         this.lastName.sendKeys(lastName);
-        this.locations.get(1).click(); // use the input and select the value
-        this.saveButton.click();
+        this.location.click();
+        this.locations.get(2).click(); // use the input and select the value
     }
 
+    public void save(){
+        this.saveButton.click();
+    }
     public void cancel(){
         this.cancelButton.click();
     }
