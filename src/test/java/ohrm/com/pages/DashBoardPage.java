@@ -34,10 +34,7 @@ public class DashBoardPage  extends  BasePage{
     }
 
     public void expandPIMMenu(){
-        if (!pimMenu.isDisplayed()){
-            //WebDriverWait wait = new WebDriverWait(driver, 20);
-            //WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("menu_pim_viewPimModule")));
-        }
+        driver.switchTo().frame("noncoreIframe");
         pimMenu.click();
     }
 

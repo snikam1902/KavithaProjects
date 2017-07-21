@@ -6,7 +6,9 @@ public class Util {
     public  static String adminUid="admin";
     public static String adminPwd="ppFEVHJP";
 
-    public String dashBoard_URL="dashboardurl";
+    public static String dashBoard_URL="http://vashint.trials621.orangehrmlive.com/client/#/dashboard/index";
 
-    public String employeeList_URL="URL";
+    public static String employeeList_URL="http://vashint.trials621.orangehrmlive.com/client/#/pim/employees";
+
+    public static String empDetailPage_URL ="http://vashint.trials621.orangehrmlive.com/client/#/pim/employees";
 }

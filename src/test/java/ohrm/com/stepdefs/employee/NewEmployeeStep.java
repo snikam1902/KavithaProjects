@@ -67,7 +67,7 @@ public class NewEmployeeStep {
 
     @Then("^I should be on the employee list page$")
     public void verifyEmpListPageOpened()  {
-        assertEquals(empListPage.URL, baseStep.getDriver().getCurrentUrl() );
+        assertEquals(Util.employeeList_URL, baseStep.getDriver().getCurrentUrl() );
     }
 
     @And("^I should see plus button on top right corner of the page$")

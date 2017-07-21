@@ -14,7 +14,7 @@ Feature: login page
     Examples:
       | userName | passWord | validation messages      |
       |          | somepwd  | Username cannot be empty |
-      | someuser |          | Password cannot be empty |
+      #| someuser |          | Password cannot be empty |
 
   @login
   Scenario Outline: Admin logging with invalid credentials

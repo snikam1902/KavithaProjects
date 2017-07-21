@@ -4,6 +4,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import ohrm.com.Util;
 import ohrm.com.pages.LoginPage;
 import ohrm.com.stepdefs.BaseStep;
 import org.openqa.selenium.WebDriver;
@@ -29,7 +30,7 @@ public class LoginLayoutStep {
     @Given("^I am on the Login page$")
     public void openLoginPage()  {
         loginPage.open();
-        assertEquals(loginPage.URL, baseStep.getDriver().getCurrentUrl());
+        assertEquals(Util.login_URL, baseStep.getDriver().getCurrentUrl());
     }
 
     @Then("^I should see the page as per the design$")
