@@ -20,11 +20,14 @@ public class BrowserFactory {
     static Logger logger = Logger.getLogger(BrowserFactory.class);
 
     public static void startBrowser() {
+
+        if (driver != null) return;
+
         if (AutomationConstants.REMOTE_BROWSER.equalsIgnoreCase("true")) {
             logger.info("grid started in SauceLabs...");
             DesiredCapabilities capabilities = new DesiredCapabilities();
             String browser = "chrome";
-            if (System.getProperty("Browser")!=null) {
+            if (System.getProperty("Browser") != null) {
                 browser = System.getProperty("Browser");
             }
             if (browser.equalsIgnoreCase("firefox")) {
@@ -39,11 +42,14 @@ public class BrowserFactory {
             try {
                 url = new URL(AutomationConstants.SELENIUM_GRID_URL);
                 driver = new RemoteWebDriver(url, capabilities);
+                logger.info("driver created");
                 driver.get(AutomationConstants.URL);
                 logger.info("title is " + driver.getTitle());
-            } catch (MalformedURLException e) {
+            } catch (Exception e) {
+                logger.info("error creating the remote driver");
                 e.printStackTrace();
                 logger.error(e.getMessage());
+                return;
             }
 
         } else {
@@ -72,41 +78,12 @@ public class BrowserFactory {
     }
 
     public static void stopBrowser() {
-        //driver.close();
-        driver.quit();
-        logger.info("closing the local browsers");
-    }
-
-    //@Before
-    public void SetUp() throws MalformedURLException {
-        boolean remotebrowser = true;
-        String path = System.getProperty("user.dir");
-        System.setProperty("webdriver.chrome.driver", path + "\\src\\test\\resources\\chromedriver.exe");
-        if (remotebrowser == false) {
-            if (driver == null) {
-                driver = new ChromeDriver();
-                driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-            }
-        } else {
-
-            DesiredCapabilities caps = DesiredCapabilities.chrome();
-            caps.setCapability("platform", "Windows 10");
-            caps.setCapability("version", "59.0");
-
-
-            String USERNAME = "kavithavinodreddy";
-            String ACCESS_KEY = "4325a45a-75ac-4944-a475-4a8f22ea1b84";
-            String sauceURL = "http://kavithavinodreddy:4325a45a-75ac-4944-a475-4a8f22ea1b84@ondemand.saucelabs.com:80/wd/hub";
-            System.out.println(sauceURL);
-            driver = new RemoteWebDriver(new URL(sauceURL), caps);
+        if (driver != null) {
+            driver.close();
+            driver.quit();
+            driver = null;
+            logger.info("closing the local browsers");
         }
-    }
-
-    //@After
-    public void cleanUp() {
-        driver.close();
-        driver.quit();
-        driver = null;
     }
 
     public static WebDriver getDriver() {
