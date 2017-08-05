@@ -10,10 +10,8 @@ import orangeHRM.pages.LoginPage;
 import orangeHRM.utils.AutomationConstants;
 import orangeHRM.utils.BrowserFactory;
 import org.junit.After;
-
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
-
 
 public class LoginStep {
 
@@ -35,7 +33,7 @@ public class LoginStep {
     @Given("^I am on the Login page$")
     public void openLoginPage()  {
         loginPage = new LoginPage();
-        loginPage.open(); // no need
+        loginPage.open();
         assertEquals(AutomationConstants.URL, loginPage.isInLoginPage());
     }
 
