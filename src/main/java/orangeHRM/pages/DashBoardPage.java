@@ -15,6 +15,8 @@ public class DashBoardPage extends BasePage {
     WebElement usersManagementLink;
     @FindBy(xpath = "//a[@id='menu_admin_viewSystemUsers']")
     WebElement usersLink;
+    @FindBy(xpath = "//a[@id='menu_admin_viewUserRoles']")
+    WebElement userRoleLink;
     @FindBy(xpath = "//li[@id='menu_admin_Organization']")
     public WebElement organizationTab;
     @FindBy(xpath = "//a[@id='menu_admin_viewLocations']")
@@ -38,13 +40,19 @@ public class DashBoardPage extends BasePage {
     }
 
     public void expandAdminMenu() {
-        driver.switchTo().frame("noncoreIframe");
         adminTab.click();
     }
 
     public void selectUsersLink() {
         usersManagementLink.click();
         usersLink.click();
+    }
+
+    public void selectUsersRoleLink() {
+        usersManagementLink.click();
+        waitForElement(By.id("menu_admin_viewUserRoles"));
+        userRoleLink.click();
+        sleep(); //todo- add wait for some element instead of sleep
     }
 
     public void expandOrganizationMenu() {
@@ -70,11 +78,7 @@ public class DashBoardPage extends BasePage {
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.elementToBeClickable(By.id("user-dropdown")));
         // TODO- tried all other wait but only thread sleep is working-fix it
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        sleep();
         userMenu.click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("user_menu")));
         logOut.click();

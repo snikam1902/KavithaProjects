@@ -24,7 +24,6 @@ public class adminStep {
 
     @Given("^admin creates a new user with below details$")
     public void adminCreatesANewUserWithLoginDetails(DataTable table) {
-        loginPage.LoginAsAdmin();
         dashBoardPage.expandPIMMenu();
         dashBoardPage.selectAddEmployee();
         addEmployeeOverlayPage.fillTheForm(table);
@@ -41,7 +40,6 @@ public class adminStep {
     public void UserCanLogin() {
         loginPage.Login(addEmployeeOverlayPage.newUser_uid, addEmployeeOverlayPage.newUser_pwd);
         assertEquals(dashBoardPage.getLoggedInUserName(), "test1 last");
-
     }
 
     @Given("^user changes his name$")
