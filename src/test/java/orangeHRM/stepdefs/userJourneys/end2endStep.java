@@ -1,11 +1,13 @@
 package orangeHRM.stepdefs.userJourneys;
 
+import cucumber.api.DataTable;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import orangeHRM.pages.*;
+import org.openqa.selenium.By;
 
 import static junit.framework.TestCase.assertFalse;
 import static org.junit.Assert.assertEquals;
@@ -20,6 +22,15 @@ public class end2endStep {
     @Given("^Admin logsIn$")
     public void adminLogsIn() {
         loginPage.LoginAsAdmin();
+    }
+
+    @Given("^admin creates a new user with below details$")
+    public void adminCreatesANewUserWithLoginDetails(DataTable table) {
+        dashBoardPage.expandPIMMenu();
+        dashBoardPage.selectAddEmployee();
+        addEmployeeOverlayPage.fillTheForm(table);
+        addEmployeeOverlayPage.save();
+        loginPage.waitForElement(By.id("small-title"));
     }
 
     @And("^admin creates a new user role \"([^\"]*)\"$")
@@ -71,4 +82,6 @@ public class end2endStep {
         System.out.println("after deletion roles " + roles);
         assertFalse(roles.contains(role));
     }
+
+
 }
