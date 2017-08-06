@@ -47,6 +47,8 @@ public class LoginPage extends BasePage {
         this.userName.sendKeys(userName);
         this.password.sendKeys(password);
         this.loginBtn.click();
+        sleep();
+        driver.switchTo().frame("noncoreIframe");
     }
 
     public void LoginAsAdmin() {

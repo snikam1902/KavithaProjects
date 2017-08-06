@@ -35,8 +35,6 @@ public class DashBoardPage extends BasePage {
     WebElement logOut;
 
     public void expandPIMMenu() {
-        driver.switchTo().frame("noncoreIframe");
-        waitForElement(By.id("menu_pim_viewPimModule"));
         //if (isExpanded(pimTab))
         pimTab.click();
         sleep();
@@ -113,7 +111,6 @@ public class DashBoardPage extends BasePage {
     }
 
     public String getLoggedInUserName() {
-        driver.switchTo().frame("noncoreIframe");
         return userName.getText();
     }
 }

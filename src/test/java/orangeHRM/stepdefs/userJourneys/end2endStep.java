@@ -36,6 +36,7 @@ public class end2endStep {
     @Given("^Admin logsIn$")
     public void adminLogsIn() {
         loginPage.LoginAsAdmin();
+        assertTrue(loginPage.getUrl().endsWith("dashboard/index"));
     }
 
     @Given("^admin creates a new user with below details$")
