@@ -55,6 +55,7 @@ public class AddEmployeeOverlayPage extends BasePage {
         middleName.sendKeys(raw.get(1).get(1));
         lastName.sendKeys(raw.get(1).get(2));
         location.click(); //TODO select the location correctly
+        sleep();
         locations.get(2).click(); // use the input and select the value
         loginDetailsChk.click();
         newUser_uid = raw.get(1).get(4) + Math.random();

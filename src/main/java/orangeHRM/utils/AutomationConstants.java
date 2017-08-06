@@ -1,8 +1,5 @@
 package orangeHRM.utils;
 
-/**
- * Created by Vinod on 21/07/2017.
- */
 public class AutomationConstants {
 
     public static String adminUid = "Admin";

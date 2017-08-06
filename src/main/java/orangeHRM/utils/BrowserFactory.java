@@ -82,7 +82,7 @@ public class BrowserFactory {
             driver.close();
             driver.quit();
             driver = null;
-            logger.info("closing the local browsers");
+            logger.info("local browser closed");
         }
     }
 

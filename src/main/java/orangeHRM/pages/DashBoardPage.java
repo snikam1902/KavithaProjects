@@ -9,26 +9,26 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class DashBoardPage extends BasePage {
-    @FindBy(xpath = "//li[@id='menu_admin_viewAdminModule']")
+    @FindBy(xpath = "//li[@id='menu_admin_viewAdminModule']/a/span[3]")
     WebElement adminTab;
     @FindBy(xpath = "//li[@id='menu_admin_UserManagement']")
-    WebElement usersManagementLink;
+    WebElement usersManagementMenu;
+    @FindBy(xpath = "//li[@id='menu_pim_viewPimModule']")
+    WebElement pimTab;
+    @FindBy(xpath = "//li[@id='menu_admin_Organization']")
+    WebElement organizationTab;
     @FindBy(xpath = "//a[@id='menu_admin_viewSystemUsers']")
     WebElement usersLink;
     @FindBy(xpath = "//a[@id='menu_admin_viewUserRoles']")
     WebElement userRoleLink;
-    @FindBy(xpath = "//li[@id='menu_admin_Organization']")
-    public WebElement organizationTab;
     @FindBy(xpath = "//a[@id='menu_admin_viewLocations']")
-    public WebElement locationsLink;
-    @FindBy(xpath = "//li[@id='menu_pim_viewPimModule']")
-    WebElement pimTab;
+    WebElement locationsLink;
     @FindBy(xpath = "//a[@id='menu_pim_viewEmployeeList']")
-    public WebElement empListLink;
+    WebElement empListLink;
     @FindBy(xpath = "//a[@id='menu_pim_addEmployee']")
-    public WebElement addEmpLink;
+    WebElement addEmpLink;
     @FindBy(xpath = "//div[@id='menu-profile']/a/span[2]")
-    private WebElement userMenu;
+    WebElement userMenu;
     @FindBy(xpath = "//a[@id='user-dropdown']/span[1]")
     WebElement userName;
     @FindBy(linkText = "Logout")
@@ -36,21 +36,48 @@ public class DashBoardPage extends BasePage {
 
     public void expandPIMMenu() {
         driver.switchTo().frame("noncoreIframe");
+        waitForElement(By.id("menu_pim_viewPimModule"));
+        //if (isExpanded(pimTab))
         pimTab.click();
+        sleep();
     }
 
+
     public void expandAdminMenu() {
-        adminTab.click();
+        waitForElement(By.id("menu_admin_viewAdminModule"));
+        String className = driver.findElement(By.xpath("//li[@id='menu_admin_viewAdminModule']/a")).getAttribute("class");
+        System.out.println("Admin menu: " + className);
+        if (!className.contains("active")) {
+            //if (!isExpanded(usersManagementLink))
+            sleep(); //i don't like adding this but somereason getting intermittend errors here
+            adminTab.click();
+            System.out.println("Admin menu clicked");
+        }
     }
 
     public void selectUsersLink() {
-        usersManagementLink.click();
+        expandUserManagementMenu();
         usersLink.click();
     }
 
+    public boolean isExpanded(WebElement menu) {
+        String className = menu.findElement(By.xpath("//a")).getAttribute("class");
+        System.out.println(className);
+        if (className.contains("active")) return true;
+        else return false;
+    }
+
+    public void expandUserManagementMenu() {
+        String className = driver.findElement(By.xpath("//li[@id='menu_admin_UserManagement']/a")).getAttribute("class");
+        System.out.println("usersManagementMenu: " + className);
+        if (!className.contains("active")) {
+            usersManagementMenu.click();
+            System.out.println("usersManagementMenu clicked");
+        }
+    }
+
     public void selectUsersRoleLink() {
-        usersManagementLink.click();
-        waitForElement(By.id("menu_admin_viewUserRoles"));
+        expandUserManagementMenu();
         userRoleLink.click();
         sleep(); //todo- add wait for some element instead of sleep
     }
@@ -65,6 +92,7 @@ public class DashBoardPage extends BasePage {
 
     public void selectAddEmployee() {
         addEmpLink.click();
+        sleep();
     }
 
     public void selectEmployeeList() {

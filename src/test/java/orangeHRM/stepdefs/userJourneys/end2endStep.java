@@ -2,11 +2,14 @@ package orangeHRM.stepdefs.userJourneys;
 
 import cucumber.api.DataTable;
 import cucumber.api.PendingException;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import orangeHRM.pages.*;
+import orangeHRM.utils.BrowserFactory;
+import org.junit.After;
 import org.openqa.selenium.By;
 
 import static junit.framework.TestCase.assertFalse;
@@ -18,6 +21,17 @@ public class end2endStep {
     DashBoardPage dashBoardPage = new DashBoardPage();
     AddEmployeeOverlayPage addEmployeeOverlayPage = new AddEmployeeOverlayPage();
     SystemUsersPage usersPage;
+
+    @Before
+    public void setUp(){
+        BrowserFactory.startBrowser();
+    }
+
+    @After
+    public void cleanUp(){
+        //BrowserFactory.stopBrowser();
+        System.out.println("closing the browser");
+    }
 
     @Given("^Admin logsIn$")
     public void adminLogsIn() {
