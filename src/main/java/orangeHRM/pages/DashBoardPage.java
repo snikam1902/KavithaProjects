@@ -35,11 +35,11 @@ public class DashBoardPage extends BasePage {
     WebElement logOut;
 
     public void expandPIMMenu() {
+        driver.switchTo().frame("noncoreIframe");
         //if (isExpanded(pimTab))
-        pimTab.click();
+        pimTab.click(); /// this is giving issues a lot
         sleep();
     }
-
 
     public void expandAdminMenu() {
         waitForElement(By.id("menu_admin_viewAdminModule"));

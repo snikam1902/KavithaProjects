@@ -8,6 +8,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import orangeHRM.pages.*;
+import orangeHRM.utils.AutomationConstants;
 import orangeHRM.utils.BrowserFactory;
 import org.junit.After;
 import org.openqa.selenium.By;
@@ -35,6 +36,8 @@ public class end2endStep {
 
     @Given("^Admin logsIn$")
     public void adminLogsIn() {
+        loginPage.open();
+        assertEquals(AutomationConstants.URL, loginPage.isInLoginPage());
         loginPage.LoginAsAdmin();
         assertTrue(loginPage.getUrl().endsWith("dashboard/index"));
     }
