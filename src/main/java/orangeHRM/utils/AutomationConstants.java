@@ -27,7 +27,8 @@ public class AutomationConstants {
 
     //browser settings
     public static final String BROWSER_TYPE = "chrome";
-    public static final String REMOTE_BROWSER = "true";
-    public static final String SELENIUM_GRID_URL = "http://kavithareddys:e345d56c-06cf-4da7-b0c9-b20941de974a@ondemand.saucelabs.com:80/wd/hub";
-    //e345d56c-06cf-4da7-b0c9-b20941de974a
+    public static final String REMOTE_BROWSER = "false";
+    public static final String SELENIUM_GRID_URL ="http://kavithareddys:e345d56c-06cf-4da7-b0c9-b20941de974a@ondemand.saucelabs.com:80/wd/hub";
+          //grid:  //"http://localhost:4444/wd/hub";
+            //
 }

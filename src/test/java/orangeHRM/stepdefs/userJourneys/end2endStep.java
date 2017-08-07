@@ -30,7 +30,7 @@ public class end2endStep {
 
     @After
     public void cleanUp(){
-        //BrowserFactory.stopBrowser();
+        BrowserFactory.stopBrowser();
         System.out.println("closing the browser");
     }
 

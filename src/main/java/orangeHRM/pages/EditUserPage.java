@@ -24,5 +24,6 @@ public class EditUserPage extends  BasePage{
             }
         }
         save.click();
+        sleep();
     }
 }

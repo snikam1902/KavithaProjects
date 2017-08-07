@@ -48,7 +48,7 @@ public class DashBoardPage extends BasePage {
         if (!className.contains("active")) {
             //if (!isExpanded(usersManagementLink))
             sleep(); //i don't like adding this but somereason getting intermittend errors here
-            adminTab.click();
+            adminTab.click(); /// this is giving issues a lot
             System.out.println("Admin menu clicked");
         }
     }

@@ -27,6 +27,7 @@ public class BrowserFactory {
             logger.info("grid started in SauceLabs...");
             DesiredCapabilities capabilities = new DesiredCapabilities();
             String browser = "chrome";
+
             if (System.getProperty("Browser") != null) {
                 browser = System.getProperty("Browser");
             }
@@ -35,9 +36,13 @@ public class BrowserFactory {
 
             } else if (browser.equalsIgnoreCase("chrome")) {
                 capabilities = DesiredCapabilities.chrome();
+
+            } else if (browser.equalsIgnoreCase("IE")) {
+                capabilities = DesiredCapabilities.internetExplorer();
             }
-            capabilities.setPlatform(Platform.WINDOWS);
-            capabilities.setVersion("48");
+            logger.info("Browser:" + browser);
+            capabilities.setPlatform(Platform.WIN10);
+            //capabilities.setVersion("48");
             URL url = null;
             try {
                 url = new URL(AutomationConstants.SELENIUM_GRID_URL);
